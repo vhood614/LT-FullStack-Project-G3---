@@ -2,7 +2,7 @@ package com.lt.service;
 
 import com.lt.bean.Customer;
 
-public class CustomerService {
+public class CustomerService implements CustomerServiceInterface{
 	
 	Customer customer = new Customer();
 	

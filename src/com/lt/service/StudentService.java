@@ -2,7 +2,7 @@ package com.lt.service;
 
 import com.lt.bean.Student;
 
-public class StudentService {
+public class StudentService implements StudentServiceInterface{
 
 	public void viewStudentDetails() {
 
