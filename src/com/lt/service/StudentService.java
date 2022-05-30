@@ -1,10 +1,16 @@
 package com.lt.service;
 
-import com.lt.bean.Student;
+import java.util.HashMap;
 
-public class StudentService implements StudentServiceInterface{
+import com.lt.bean.Student;
+import com.lt.dao.StudentDao;
+
+public class StudentService implements StudentServiceInterface {
 
 	public void viewStudentDetails() {
+		StudentDao studDao = new StudentDao();
+
+		studDao.viewStudentDetails();
 
 	}
 

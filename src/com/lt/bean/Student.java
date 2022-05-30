@@ -9,6 +9,26 @@ public class Student {
 	private String studentUserName;
 	private int userPassword;
 	private int studentSemister;
+	private int studentGrades;
+//	public Student(int studentId, String studentName, String studentAddress, String studentGender, int studentAge,
+//			String studentUserName, int userPassword, int studentSemister, int studentGrades) {
+//		super();
+//		this.studentId = studentId;
+//		this.studentName = studentName;
+//		this.studentAddress = studentAddress;
+//		this.studentGender = studentGender;
+//		this.studentAge = studentAge;
+//		this.studentUserName = studentUserName;
+//		this.userPassword = userPassword;
+//		this.studentSemister = studentSemister;
+//		this.studentGrades = studentGrades;
+//	}
+	public int getStudentGrades() {
+		return studentGrades;
+	}
+	public void setStudentGrades(int studentGrades) {
+		this.studentGrades = studentGrades;
+	}
 	public int getStudentId() {
 		return studentId;
 	}
@@ -61,25 +81,19 @@ public class Student {
 	
 	@Override
 	public String toString() {
-		return "Student [studentId=" + studentId + ", studentName=" + studentName + ", studentAddress=" + studentAddress
-				+ ", studentGender=" + studentGender + ", studentAge=" + studentAge + ", studentUserName="
-				+ studentUserName + ", userPassword=" + userPassword + ", studentSemister=" + studentSemister + "]";
+		return "Student [studentId=" + studentId + ", studentName=" + studentName + ", studentGrades=" + studentGrades
+				+ "]";
 	}
 	
 	
-	public Student(int studentId, String studentName, String studentAddress, String studentGender, int studentAge,
-			String studentUserName, int userPassword, int studentSemister) {
+	
+	
+	public Student(int studentId, String studentName, int studentGrades) {
 		super();
 		this.studentId = studentId;
 		this.studentName = studentName;
-		this.studentAddress = studentAddress;
-		this.studentGender = studentGender;
-		this.studentAge = studentAge;
-		this.studentUserName = studentUserName;
-		this.userPassword = userPassword;
-		this.studentSemister = studentSemister;
+		this.studentGrades = studentGrades;
 	}
-	
 	
 	
 

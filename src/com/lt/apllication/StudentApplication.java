@@ -4,7 +4,7 @@ import com.lt.service.StudentService;
 
 public class StudentApplication {
 
-	public static void main(String[] args) {
+	public void studentApplication() {
 		// TODO Auto-generated method stub
 		
 		StudentService studService = new StudentService();
