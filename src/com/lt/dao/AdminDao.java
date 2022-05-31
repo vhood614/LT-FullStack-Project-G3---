@@ -1,7 +1,11 @@
 package com.lt.dao;
 
-public class AdminDao implements AdminDaoInterface{
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
+public class AdminDao implements AdminDaoInterface{
+	Scanner sc = new Scanner(System.in);
 	@Override
 	public void adminLogin() {
 		// TODO Auto-generated method stub
@@ -10,6 +14,14 @@ public class AdminDao implements AdminDaoInterface{
 
 	@Override
 	public void addCourse() {
+		
+		
+		CourseDao newCourseDao = new CourseDao();
+		List adminCourseList = newCourseDao.returnCoursesList();;
+		System.out.println("Enter new course to add: ");
+		String courseToAdd = sc.nextLine();
+		adminCourseList.add(courseToAdd);
+		
 		// TODO Auto-generated method stub
 		
 	}

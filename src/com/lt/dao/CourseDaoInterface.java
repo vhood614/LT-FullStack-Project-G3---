@@ -1,6 +1,8 @@
 package com.lt.dao;
 
+import java.util.List;
+
 public interface CourseDaoInterface {
-	public void returnCoursesList();
+	public List returnCoursesList();
 
 }

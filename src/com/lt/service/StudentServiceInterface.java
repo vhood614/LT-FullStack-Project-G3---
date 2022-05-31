@@ -2,22 +2,14 @@ package com.lt.service;
 
 public interface StudentServiceInterface {
 
-	public void viewStudentDetails();
+	public void registerCourse();
 
-	public void addCourse();
+	public void viewreportcard();
 
-	public void dropCourse();
-
-	public void viewCourses();
-
-	public void viewGrades();
+	public void viewCatalog();
 
 	public void payFee();
 
-	public void registerStudent();
-
-	public void updateStudent();
-
-	public void deleteStudent();
+	public void course();
 
 }

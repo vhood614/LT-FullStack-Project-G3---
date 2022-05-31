@@ -11,15 +11,14 @@ public class ProfessorService implements ProfessorServiceInterface {
 		
 	}
 
-	public void viewCourse() {
+	public List viewCourse() {
 
 		List courses = new ArrayList<>();
 		courses.add("Computer Science");
 		courses.add("Data Mining");
 		courses.add("Power BI");
 
-		System.out.println(courses);
-
+		return courses;
 	}
 
 	@Override

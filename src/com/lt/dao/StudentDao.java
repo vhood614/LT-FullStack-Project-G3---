@@ -1,9 +1,16 @@
 package com.lt.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
+import com.lt.bean.Catalog;
+
 public class StudentDao implements StudentDaoInterface {
+	
+	static List<Catalog> catalog = new ArrayList<>();
 
 	@Override
 	public void viewStudentDetails() {
@@ -18,55 +25,45 @@ public class StudentDao implements StudentDaoInterface {
 		for (Map.Entry sDetails : studentDetails.entrySet()) {
 			System.out.println(sDetails.getKey() + "-" + sDetails.getValue());
 		}
-
 	}
 
 	@Override
-	public void addCourse() {
+	public void registerCourse(int input) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void dropCourse() {
+	public void viewreportcard(int id) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void viewCourses() {
-		// TODO Auto-generated method stub
+	public List<Catalog> viewCatalog() {
+		List courseList = new ArrayList<>();
+		courseList.add("Computer Science");
+		courseList.add("Data Mining");
+		courseList.add("Data Science");
+		courseList.add("Data Architect");
 
+		Iterator<String> i = courseList.iterator();
+		while (i.hasNext()) {
+			String test = i.next();
+			System.out.println("-> " + test);
+		}
+		return catalog;
 	}
 
 	@Override
-	public void viewGrades() {
+	public void payFee(int id) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void payFee() {
+	public void course() {
 		// TODO Auto-generated method stub
-
+		
 	}
-
-	@Override
-	public void registerStudent() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void updateStudent() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void deleteStudent() {
-		// TODO Auto-generated method stub
-
-	}
-
 }

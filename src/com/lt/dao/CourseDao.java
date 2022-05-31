@@ -7,7 +7,7 @@ import java.util.List;
 public class CourseDao implements CourseDaoInterface {
 
 	@Override
-	public void returnCoursesList() {
+	public List returnCoursesList() {
 		// TODO Auto-generated method stub
 		List courseList = new ArrayList<>();
 		courseList.add("Computer Science");
@@ -15,11 +15,7 @@ public class CourseDao implements CourseDaoInterface {
 		courseList.add("Data Science");
 		courseList.add("Data Architect");
 
-		Iterator<String> i = courseList.iterator();
-		while (i.hasNext()) {
-			String test = i.next();
-			System.out.println("-> " + test);
-		}
+		return courseList;
 
 	}
 
