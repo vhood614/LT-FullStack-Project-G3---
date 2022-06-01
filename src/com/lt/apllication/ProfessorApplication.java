@@ -14,6 +14,9 @@ import com.lt.service.StudentService;
 
 public class ProfessorApplication {
 	
+	/**
+	 * Menu for the professor.
+	 */
 	
 	public void professorlogin() {
 		ProfessorService profService = new ProfessorService();
@@ -46,10 +49,6 @@ public class ProfessorApplication {
 			}
 		}
 
-	public void createProfessorView() {
-		// TODO Auto-generated method stub
-		
-	}
 		
 	
 }

@@ -12,10 +12,13 @@ public class AdminService implements AdminServiceInterface {
 	}
 
 	public void removeCourse() {
-
+		AdminDao adminDao = new AdminDao();
+		adminDao.removeCourse();
 	}
 
 	public void addProfessor() {
+		AdminDao adminDao = new AdminDao();
+		adminDao.addProfessor();
 
 	}
 
@@ -60,6 +63,8 @@ public class AdminService implements AdminServiceInterface {
 	@Override
 	public void approveStudentRegistration() {
 		// TODO Auto-generated method stub
+		AdminDao adminDao = new AdminDao();
+		adminDao.approveStudentRegistration();
 
 	}
 

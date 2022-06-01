@@ -12,6 +12,7 @@ import com.lt.bean.User;
 import com.lt.dao.UserDao;
 import com.lt.service.CourseService;
 import com.lt.service.StudentService;
+import com.lt.service.UserService;
 
 public class CRSApplication {
 	static LocalDateTime localDateTime = LocalDateTime.now();
@@ -21,63 +22,74 @@ public class CRSApplication {
 	static StudentApplication student = new StudentApplication();
 	static boolean flag;
 	static User LoggedInuser = null;
-	
- public static void main (String [] args) {
-	 
-	userData.add(new User("1","admin", "123", "admin", "admin"));
-	userData.add(new User("2","student", "123", "student", "student"));
-	userData.add(new User("3","professor", "123", "professor", "prof"));
-	
-	Scanner sc = new Scanner(System.in);
-	
-	System.out.println("==Welcome to CRS Application==");
-	System.out.println("1. Login");
-	System.out.println("2. New Registeration");
-	System.out.println("3. Update Password");
-	System.out.println("Please select your choice: ");
-	int input = sc.nextInt();
-	sc.nextLine();
+
+	static private UserService userService = new UserService();
+
+	/**
+	 * Main method for users to login and new registration
+	 */
+
+	public static void main(String[] args) {
+
+		userData = userService.loginUsers();
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("==Welcome to CRS Application==");
+		System.out.println("1. Login");
+		System.out.println("2. New Registeration");
+		System.out.println("3. Update Password");
+		System.out.println("Please select your choice: ");
+
+		int input = sc.nextInt();
+		sc.nextLine();
 //	UserDao userDao = new UserDao();
 //	List returnedUserList = userDao.login();
 //	Iterator<User> i = returnedUserList.iterator();
 //	while (i.hasNext()) {
 //		User test = i.next();
 //	}
-	
-	switch (input) {
-	case 1:
-		System.out.println("Enter UserName: ");
-		String userName = sc.nextLine();
-		System.out.println("Enter Password: ");
-		String pwd = sc.nextLine();
-		flag = false;
-		
-		userData.forEach(user -> {
-			if(user.getUsername().equals(userName) && user.getPassword().equals(pwd)) {
-				flag = true;
-				LoggedInuser = user;
+
+		switch (input) {
+		case 1:
+			System.out.println("Enter UserName: ");
+			String userName = sc.nextLine();
+			System.out.println("Enter Password: ");
+			String pwd = sc.nextLine();
+			flag = false;
+
+			userData.forEach(user -> {
+				if (user.getUsername().equals(userName) && user.getPassword().equals(pwd)) {
+					flag = true;
+					LoggedInuser = user;
+				}
+			});
+			if (flag) {
+				System.out.println("Welcome User - " + LoggedInuser.getRole() + "-" + "" + LoggedInuser.getName()
+						+ "   " + localDateTime);
+				String role = LoggedInuser.getRole();
+				if (role.equals("Admin")) {
+					admin.createAdminView();
+				}
+				if (role.equals("Student")) {
+					student.createStudentView(LoggedInuser.getName());
+				}
+				if (role.equals("Professor")) {
+					professor.professorlogin();
+				}
+			} else {
+				System.out.println("Username or Password Incorrect!!");
+				return;
 			}
-		});
-		if(flag) {
-			System.out.println("Logged in as - "+LoggedInuser.getRole()+"   "+ localDateTime );
-			String role = LoggedInuser.getRole();
-			if(role.equals("admin")) {
-				admin.createAdminView();
-			}
-			if(role.equals("student")) {
-				student.createStudentView();
-			}
-			if(role.equals("prof")) {
-				professor.professorlogin();
-			}
-		}else {
-			System.out.println("Username or Password Incorrect!!");
-			return;
+			break;
+
+		case 2:
+			
+			userService.createNewRegistrationScreen();
+			
+
 		}
-		
-	}
-		
-	
+
 //		System.out.println("Choose from following options:");
 //		System.out.println("--------------");
 //		System.out.println("1. View Teaching Courses");
@@ -107,5 +119,5 @@ public class CRSApplication {
 //	 pa.professorlogin();
 ////	 StudentApplication sa = new StudentApplication();
 ////	 sa.studentApplication();
- }
+	}
 }

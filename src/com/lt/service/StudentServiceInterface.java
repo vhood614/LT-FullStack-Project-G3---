@@ -1,15 +1,19 @@
 package com.lt.service;
 
+import com.lt.bean.Student;
+
 public interface StudentServiceInterface {
 
-	public void registerCourse();
+	public void registerCourse(String student);
 
-	public void viewreportcard();
+	public void viewReportcard(int id);
 
 	public void viewCatalog();
 
 	public void payFee();
 
-	public void course();
+	public void addCourse();
+	public void dropCourse();
+
 
 }

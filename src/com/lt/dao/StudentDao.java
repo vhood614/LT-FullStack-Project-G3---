@@ -5,12 +5,18 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import com.lt.bean.Catalog;
+import com.lt.bean.Course;
+import com.lt.bean.Student;
+import com.lt.bean.User;
 
 public class StudentDao implements StudentDaoInterface {
 	
-	static List<Catalog> catalog = new ArrayList<>();
+	static Map<String, String> catalog = new HashMap<>();
+	static List studentCourseList = new ArrayList<>();
+	static Student student = new Student();
 
 	@Override
 	public void viewStudentDetails() {
@@ -28,31 +34,92 @@ public class StudentDao implements StudentDaoInterface {
 	}
 
 	@Override
-	public void registerCourse(int input) {
-		// TODO Auto-generated method stub
+	public void registerCourse(String studentName) {
 		
-	}
-
-	@Override
-	public void viewreportcard(int id) {
-		// TODO Auto-generated method stub
+		Student student = new Student(1, studentName, 0);
+		System.out.println("Select Course to Register:");
+		List course = new CourseDao().returnCoursesList();
+		course.stream().peek(System.out::println);
+		System.out.println("Select Course:");
+		Scanner sc = new Scanner(System.in);
+		String studentCourseChoice = sc.nextLine();
 		
-	}
-
-	@Override
-	public List<Catalog> viewCatalog() {
-		List courseList = new ArrayList<>();
-		courseList.add("Computer Science");
-		courseList.add("Data Mining");
-		courseList.add("Data Science");
-		courseList.add("Data Architect");
-
-		Iterator<String> i = courseList.iterator();
-		while (i.hasNext()) {
-			String test = i.next();
-			System.out.println("-> " + test);
+		if(course.stream().anyMatch(p -> p.equals(studentCourseChoice))) {
+			student.setStudentCourse(new Course(studentCourseChoice, 1, 1));
+			System.out.println( "Student [studentName=" + student.getStudentName() + ", studentGrades=" + student.getStudentGrades()
+					+ ", CourseName="+ student.getStudentCourse().getCourseName()+"]");
+			System.out.println("Successfully registered for the course!");
+		} else {
+			System.out.println("course not found!!");
 		}
-		return catalog;
+		
+	}
+
+	@Override
+	public ArrayList<String> viewreportcard(int i) {
+		// TODO Auto-generated method stub
+		ArrayList<String> datalist = new ArrayList<String>();
+
+		if (i == 10) {
+
+			datalist.add("Computer Science -> B+");
+			datalist.add("Data Mining -> C-");
+			datalist.add("Data Science -> D+");
+			datalist.add("Data Architect -> C-");
+
+		} else if (i == 1) {
+
+			datalist.add("Computer Science -> B+");
+			datalist.add("Data Mining -> C-");
+			datalist.add("Data Science -> D+");
+			datalist.add("Data Architect -> C-");
+
+		} else if (i == 2) {
+
+			datalist.add("Computer Science -> B+");
+			datalist.add("Data Mining -> C-");
+			datalist.add("Data Science -> D+");
+			datalist.add("Data Architect -> C-");
+
+		} else if (i == 3) {
+
+			datalist.add("Computer Science -> B+");
+			datalist.add("Data Mining -> C-");
+			datalist.add("Data Science -> D+");
+			datalist.add("Data Architect -> C-");
+
+		} else if (i == 4) {
+
+			datalist.add("Computer Science -> B+");
+			datalist.add("Data Mining -> C-");
+			datalist.add("Data Science -> D+");
+			datalist.add("Data Architect -> C-");
+
+		}
+		Iterator<String> i6=datalist.iterator();
+        while(i6.hasNext()){
+      	  
+      	  String test=i6.next();
+      	  System.out.println(test);
+        }
+		return datalist;
+	}
+		
+	
+
+	@Override
+	public Map<String, String> viewCatalog() {
+		
+		Map<String, String> courseMap = new HashMap<String, String>();
+		courseMap.put("1", "Computer Science");
+		courseMap.put("2", "Data Mining");
+		courseMap.put("3", "Data Science");
+		courseMap.put("4", "Data Architect");
+		
+		for(var entry: courseMap.entrySet()) {
+			System.out.println(entry.getKey()+". "+ entry.getValue());
+		}
+		return courseMap;
 	}
 
 	@Override
@@ -62,8 +129,42 @@ public class StudentDao implements StudentDaoInterface {
 	}
 
 	@Override
-	public void course() {
+	public void addCourse() {
 		// TODO Auto-generated method stub
+		System.out.println("Below are the offered courses: ");
+		System.out.println(viewCatalog());
+		Map studentCourseMap = viewCatalog();
+		System.out.println("Add a course from catalog: ");
+		Scanner sc = new Scanner(System.in);
+		String studentCourseChoice = sc.nextLine();
+		
+		switch(studentCourseChoice) {
+		case "1":
+			studentCourseList.add(studentCourseMap.get(studentCourseChoice));
+			System.out.println("Student Course list after adding : " + "\n"+ studentCourseList);
+			
+		}
+		
+		
+	}
+
+	@Override
+	public void dropCourse() {
+		// TODO Auto-generated method stub
+		System.out.println("Below are the offered courses: ");
+		System.out.println(viewCatalog());
+		Map studentCourseMap = viewCatalog();
+		System.out.println("Drop a course from Student Course List: ");
+		Scanner sc = new Scanner(System.in);
+		String studentCourseChoice = sc.nextLine();
+		
+		switch(studentCourseChoice) {
+		case "1":
+			viewCatalog().remove(studentCourseMap.get(studentCourseChoice));
+			System.out.println("Student Course list after removing : " + "\n"+ viewCatalog());
+			
+		}
+		
 		
 	}
 }

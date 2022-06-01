@@ -10,7 +10,20 @@ public class Student {
 	private int userPassword;
 	private int studentSemister;
 	private int studentGrades;
-//	public Student(int studentId, String studentName, String studentAddress, String studentGender, int studentAge,
+	private Course studentCourse;
+	
+	
+	
+public Student() {
+		super();
+	}
+public Course getStudentCourse() {
+		return studentCourse;
+	}
+	public void setStudentCourse(Course studentCourse) {
+		this.studentCourse = studentCourse;
+	}
+	//	public Student(int studentId, String studentName, String studentAddress, String studentGender, int studentAge,
 //			String studentUserName, int userPassword, int studentSemister, int studentGrades) {
 //		super();
 //		this.studentId = studentId;

@@ -5,6 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class CourseDao implements CourseDaoInterface {
+	
+	/**
+	 * Returns the list of all the courses.
+	 */
 
 	@Override
 	public List returnCoursesList() {
@@ -18,5 +22,19 @@ public class CourseDao implements CourseDaoInterface {
 		return courseList;
 
 	}
+	
+	public List returnAllCoursesList() {
+		List allCoursesList = new ArrayList<>();
+		allCoursesList.add("Computer Science");
+		allCoursesList.add("Data Mining");
+		allCoursesList.add("Data Science");
+		allCoursesList.add("Data Architect");
+		allCoursesList.add("Data Scientist");
+		return allCoursesList;
+		
+		
+	}
+	
+		
 
 }

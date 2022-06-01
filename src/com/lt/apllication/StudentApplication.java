@@ -2,20 +2,18 @@ package com.lt.apllication;
 
 import java.util.Scanner;
 
-import com.lt.service.CourseService;
 import com.lt.service.StudentService;
 import com.lt.service.StudentServiceInterface;
 
 public class StudentApplication {
+	Scanner sc = new Scanner(System.in);
+	static StudentService studentService;
 
-	public void studentApplication() {
-		// TODO Auto-generated method stub
-
-		StudentService studService = new StudentService();
-
+	public StudentApplication() {
+		studentService = new StudentService();
 	}
 
-	public void createStudentView() {
+	public void createStudentView(String studentName) {
 		StudentService studService = new StudentService();
 		// TODO Auto-generated method stub
 		System.out.println("Choose from following options:");
@@ -27,40 +25,34 @@ public class StudentApplication {
 		System.out.println("5. View Grades");
 		System.out.println("6. Pay Fee");
 
+		
+		System.out.println("Enter Student Id :");
+		int studentId = sc.nextInt();
 		System.out.println("Enter your choice: ");
-		Scanner sc = new Scanner(System.in);
+//		Scanner sc = new Scanner(System.in);
 		int studOperationChoice = sc.nextInt();
 
 		switch (studOperationChoice) {
 		case 1:
-			StudentService ssc = new StudentService();
-			ssc.viewCatalog();
-			System.out.println("Please select the Course\n");
-			int inp = sc.nextInt();
-			ssc.registerCourse(inp);
-
+			studentService.viewCatalog();
 			break;
 
 		case 2:
-			StudentServiceInterface ssc1 = new StudentService();
-			studService.viewreportcard();
+			studentService.registerCourse(studentName);
+
 			break;
 
 		case 3:
-			StudentServiceInterface ssc2 = new StudentService();
-			studService.viewCatalog();
+			studentService.addCourse();
 			break;
 
 		case 4:
-			StudentServiceInterface ssc3 = new StudentService();
-			studService.course();
+			studentService.dropCourse();
 			break;
 
 		case 5:
-			StudentServiceInterface ssc4 = new StudentService();
-			studService.payFee();
+			studentService.viewReportcard(studentId);
 			break;
-
 		case 6:
 			break;
 		case 7:

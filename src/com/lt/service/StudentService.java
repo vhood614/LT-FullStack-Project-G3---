@@ -8,55 +8,50 @@ import com.lt.bean.Student;
 import com.lt.dao.StudentDao;
 
 public class StudentService implements StudentServiceInterface {
-	
-	StudentDao studentDao = new StudentDao(); 
+
+	static private StudentDao studentDao = new StudentDao();
 
 	public void viewStudentDetails() {
 		studentDao.viewStudentDetails();
 	}
 
-public void registerCourse(int input){
-		studentDao.registerCourse(input);
+	@Override
+	public void registerCourse(String studentName) {
+		studentDao.registerCourse(studentName);
 	}
-	
-    public void viewreportcard(int id){
-    	int i =id;
-    	studentDao.viewreportcard(i);
+
+	public void viewReportcard(int id) {
+		int i = id;
+		studentDao.viewreportcard(i);
+
 	}
-    
-    public void viewCatalog(){
-    	ArrayList<Catalog> resultlist = (ArrayList<Catalog>) studentDao.viewCatalog();
-    	
-    	System.out.println(" Courses:");
-    	for(int i=0;i<resultlist.size();i++){
-    		System.out.println(i+1+"."+resultlist.get(i));
-    	}
-    	
-    	
-    }
+
+	public void viewCatalog() {
+		ArrayList<Catalog> resultlist = (ArrayList<Catalog>) studentDao.viewCatalog();
+
+		System.out.println(" Courses:");
+		resultlist.stream().peek(System.out::println);
+
+	}
 
 	@Override
 	public void payFee() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void course() {
+	public void addCourse() {
 		// TODO Auto-generated method stub
-		
+		studentDao.addCourse();
+
 	}
 
 	@Override
-	public void registerCourse() {
+	public void dropCourse() {
 		// TODO Auto-generated method stub
-		
+		studentDao.dropCourse();
+
 	}
 
-	@Override
-	public void viewreportcard() {
-		// TODO Auto-generated method stub
-		
-	}
 }
-
